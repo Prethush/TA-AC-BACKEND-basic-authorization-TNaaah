@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   
+    <nav class="bg-primary py-4 px-8 flex justify-between items-center">
+    
+        <a href="/" class="text-white text-3xl font-bold">Home</a>
+        <div class="w-64 flex justify-between items-center">
+            <a href="/articles/new" class="bg-blue-900 p-2 rounded text-white font-bold hover:bg-blue-600 text-xl">Add Articles</a>
+            <a href="/users/logout" class="bg-blue-900 p-2 rounded text-white font-bold hover:bg-blue-600 text-xl">Logout</a>
+        </div>
+    </nav>
+    <main class="px-12 my-20 py-8 w-11/12 mx-auto">
+        <h1 class="text-4xl text-blue-600 font-bold mb-3"><%= article.title %> </h1>
+        <h4 class="text-red-500 my-3 font-bold"><%= article.author.firstName %></h4> 
+        <% article.tags.forEach(a => { %>
+            <h4 class="text-red-500 my-3 font-bold inline-block"><%= a %></h4> 
+        <% }) %>
+       
+        <p class="text-xl font-bold my-3 text-green-700"><%= article.description %></p>
+        <h5 class="mb-3"><%= article.likes %></h5>
+        <div class="mb-6">
+            <a href="/articles/<%= article.slug %>/like" class="btn1 bg-green-600 p-2 text-white rounded-lg hover:bg-green-400">Like</a>
+            <% if(error) { %>
+                <h2 class="text-2xl text-red-500 font-bold my-2"><%= error %></h2>
+            <% } %>
+        </div>
+        <a href="/articles/<%= article.slug %>/edit" class="bg-blue-600 p-2 text-white rounded-lg hover:bg-blue-400">Edit</a>
+        <a href="/articles/<%= article.slug %>/delete" class="ml-2 bg-red-500 p-2 text-white rounded-lg hover:bg-red-400">Delete</a>
+        </section>
+
+        <section class="mt-10">
+            <form action="/articles/<%= article.slug %>/comments" method="POST">
+                <fieldset>
+                    <textarea name="title" rows="5" cols="40" class="rounded-lg block mb-4 border border-gray-300 p-2"></textarea>
+                    <input type="submit" value="Add Comment" class="bg-green-500 text-white font-bold p-2 cursor-pointer hover:bg-green-400 rounded-lg">
+                </fieldset>
+            </form>
+        </section>
+
+        <section class="mt-6 bg-gray-200 px-8 py-8 rounded-lg">
+            <h3 class="text-blue-600 font-bold text-3xl border-b-2 border-gray-300">Comments</h3>
+            <% if(info) { %>
+                <h2 class="text-red-500 font-bold text-2xl"><%= info %></h2>
+            <% } %>
+            <% comments.forEach(comment => { %>
+                <div class="my-4">
+                    <h3 class="text-indigo-600 text-2xl font-bold"><%= comment.title %></h3>
+                    <h4 class="text-gray-700 font-bold"><%= comment.author.firstName %></h4>
+                    <h5 class="font-bold text-gray-700 text-lg"><%= comment.likes %></h5>
+                    <a href="/comments/<%= comment.id %>/likes" class="mt-2 inline-block bg-green-500 p-0.5 text-white rounded-sm text-xs hover:bg-green-400">Like</a>
+                   
+                    <div>
+                        <a href="/comments/<%= comment.id %>/edit" class="mt-2 inline-block bg-blue-500 p-0.5 text-white  text-xs rounded-sm hover:bg-blue-400">Edit</a>
+                        <a href="/comments/<%= comment.id %>/delete" class="mt-2 inline-block bg-red-500 p-0.5 text-white text-xs rounded-sm hover:bg-red-400">Delete</a>
+                    </div>
+                    
+                </div>
+            <% }) %>
+            
+        </section>
+    </main>
+</body>
+</html>
