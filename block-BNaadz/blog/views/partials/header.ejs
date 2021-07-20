@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <nav class="bg-primary py-4 px-8 flex justify-between items-center">
+        <a href="/" class="text-white text-3xl font-bold">Home</a>
+        <% if(!user) { %>
+            <div class="w-44 flex justify-between items-center">
+                <a href="/users/register" class="inline-block  bg-blue-900 text-white p-3 hover:bg-indigo-700 rounded-lg font-bold"><h2>Register</h2></a>
+                <a href="/users/login" class="inline-block  bg-blue-900 text-white p-3 hover:bg-indigo-700 rounded-lg font-bold text"><h2>Login</h2></a>
+              </div>
+        <% } else { %>
+            <div class=" flex justify-between items-center text-white">
+                <h3 class="mr-6 text-xl"><i class="fas fa-user"></i>(<%= user.firstName %>)</h3>
+                <a href="/articles/list/<%= user.id %>" class="mr-4 inline-block  bg-blue-900 text-white p-3 hover:bg-indigo-700 rounded-lg font-bold">My Articles</a>
+                <a href="/articles/new" class="mr-4 inline-block  bg-blue-900 text-white p-3 hover:bg-indigo-700 rounded-lg font-bold"><h2>Add Articles</h2></a>
+                <a href="/users/logout" class="inline-block  bg-blue-900 text-white p-3 hover:bg-indigo-700 rounded-lg font-bold text"><h2>Logout</h2></a>
+              </div>
+        <% } %>
+       
+    </nav>
+</body>
+</html>
