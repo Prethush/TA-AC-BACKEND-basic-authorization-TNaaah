@@ -15,6 +15,7 @@ router.get('/register', (req, res, next) => {
 
 //registering a user
 router.post('/register', (req, res, next) => {
+  req.body.blocked = false;
   User.create(req.body, (err, user) => {
     if(err) return next(err);
     console.log(user);
@@ -24,7 +25,8 @@ router.post('/register', (req, res, next) => {
 
 //render login page
 router.get('/login', (req, res, next) => {
-  res.render('login');
+  let error = req.flash('error')[0];
+  res.render('login', {error});
 });
 
 //process login request
@@ -45,10 +47,18 @@ router.post("/login", (req, res, next) => {
       if(!result) {
         req.flash("error", "Password Incorrect");
         return res.redirect('/users/login');
+      } 
+      console.log(req.blocked);
+      if(user.blocked) {
+        console.log(req.blocked, "blocked")
+        req.flash("error", "You are blocked by Admin");
+        return res.redirect('/users/login');
+      } else {
+          req.session.userId = user.id;
+          req.flash("info", `Welcome ${user.admin ? "admin" : "user"} `);
+          res.redirect(`/${user.admin ? "admin": "clients"}/products`);
       }
-      req.session.userId = user.id;
-      req.flash("info", `Welcome ${user.admin ? "admin" : "user"} `);
-      res.redirect(`/${user.admin ? "admin": "clients"}/products`);
+  
     })
   })
 });

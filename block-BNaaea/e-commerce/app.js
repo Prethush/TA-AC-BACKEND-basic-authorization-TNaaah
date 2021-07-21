@@ -49,6 +49,7 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.use(auth.userInfo);
 
 app.use('/', indexRouter);

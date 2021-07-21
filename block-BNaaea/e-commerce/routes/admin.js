@@ -1,4 +1,5 @@
 let express = require('express');
+let User = require('../models/users');
 let router = express.Router();
 let Product = require('../models/products');
 
@@ -87,5 +88,35 @@ router.get('/products/category/:cat', (req, res, next) => {
         res.render('adminProductList', {products});
     }) 
 });
+
+router.get('/userslist', (req, res, next) => {
+    let message = req.flash('message')[0];
+    User.find({user: 'on'}, (err, users) => {
+        if(err) return next(err);
+        res.render('usersList', {users, message});
+    })
+});
+
+//block a user
+router.get('/block/:id', (req, res, next) => {
+    let id = req.params.id;
+    req.body.blocked = true;
+    User.findByIdAndUpdate(id, req.body, (err, user) => {
+        if(err) return next(err);
+        req.flash("message", "Successfully Blocked");
+        res.redirect('/admin/userslist');
+    })
+});
+
+//unblock a user 
+router.get('/unblock/:id', (req, res, next) => {
+    let id = req.params.id;
+    req.body.blocked = false;
+    User.findByIdAndUpdate(id, req.body, (err, user) => {
+        if(err) return next(err);
+        req.flash("message", "Successfully Unblocked");
+        res.redirect('/admin/userslist');
+    })
+})
 
 module.exports = router;

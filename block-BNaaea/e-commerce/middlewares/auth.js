@@ -20,7 +20,7 @@ module.exports = {
             })
         } else{
             req.user = null;
-            req.locals.user = user;
+            res.locals.user = null;
             next();
         }
     }
