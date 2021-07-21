@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body class="text-custom">
+    <%- include('partials/header') %>
+    <div class="h-custom flex items-center justify-center">
+        <form action="/users/login" method="POST" class="w-1/3 border border-gray-300 flex flex-col p-8 rounded-lg">
+            <legend class="text-center text-2xl font-bold">Login Form</legend>
+            <% if(error) { %>
+                <h2 class="text-2xl text-red-500 my-2 font-bold"><%= error %></h2>
+            <% } %>
+            
+            <input type="email" name="email" placeholder="Email" class="bg-gray-300 border border-gray-300 px-2 py-3 my-3 rounded-lg">
+            <input type="password" name="passwd" placeholder="Password" class="bg-gray-300 border border-gray-300 px-2 py-3 my-3 rounded-lg">
+            <input type="submit" value="Login" class="bg-blue-500 hover:bg-blue-400 text-white font-bold text-xl border border-gray-300 px-2 py-3 my-3 rounded-lg">
+        </form>
+    </div>
+    
+</body>
+</html>

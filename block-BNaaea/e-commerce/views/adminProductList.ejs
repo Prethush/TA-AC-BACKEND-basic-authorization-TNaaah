@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+</head>
+<body class="text-custom">
+    <nav class="flex py-4 bg-blue-900 justify-between items-center px-8">
+        <div class="h-20">
+            <a href="/"><img src="/images/logo3.jpg" alt="logo" class="h-full"></a>
+        </div>
+        
+        <div class="flex justify-between items-center">
+            <h2 class="text-white mr-4 text-xl"><i class="fas fa-user mr-2"></i><%= user.firstName %>(admin)</h2>
+            <a href="/admin/userslist" class="bg-green-500 font-bold text-white p-2 rounded-lg text-xl hover:bg-green-400 mr-3">View Users</a>
+            <a href="/admin/products/new" class="bg-green-500 font-bold text-white p-2 rounded-lg text-xl hover:bg-green-400">Add Product</a>
+            <a href="/admin/products" class="bg-green-500 font-bold text-white p-2 rounded-lg text-xl ml-4 hover:bg-green-400">Product List</a>
+            <a href="/users/logout" class="bg-green-500 font-bold text-white p-2 rounded-lg text-xl ml-4 hover:bg-green-400">Logout</a>
+        </div>
+    </nav>
+    <main>
+        <section class="flex">
+            <aside class="flex-20 bg-red-400 min-h-screen px-4 py-8">
+                <a href="/admin/products" class="p-2 rounded-lg inline-block my-4 text-white font-bold bg-yellow-500 hover:bg-yellow-400 text-3xl">Reset</a>
+               <h2 class="text-3xl font-bold mb-4 border-b border-white pb-3">Category</h2>
+               <% categories.forEach(c => { %>
+                    <a href="/admin/products/category/<%= c%>" class="p-2 bg-gray-500 hover:bg-gray-400 text-white text-xl font-bold my-1 rounded-lg inline-block ml-1"><h2 class="inline-block"><%= c %></h2></a>
+               <% }) %>
+            </aside>
+            <div class="flex-80 h-full min-h-screen p-12">
+                <% products.forEach(product => { %>
+                    <div class="flex justify-between bg-green-200 rounded-lg p-8 items-center w-9/12 mb-4 h-80 mx-auto">
+                        <h2 class="text-2xl font-bold"><%= product.name %></h2>
+                        <img src="<%= product.img %>" alt="product" class="w-96">
+                        <a href="/admin/products/<%= product.id %>" class="bg-blue-500 font-bold text-white p-2 rounded-lg text-xl ml-4 hover:bg-blue-400">Show More</a>
+                    </div>
+                   
+                <% }) %>
+            </div>
+        </section>
+       
+    </main>
+    
+    
+</body>
+</html>
