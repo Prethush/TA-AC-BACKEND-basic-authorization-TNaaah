@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <a href="/admin/products/new">Add Product</a>
+    <a href="/admin/products">Products List</a>
+    <a href="/users/logout">Logout</a>
+
+    <img src="<%= product.img %>" alt="product">
+    <h2><%= product.name %></h2>
+    <h2>Quantity Left: <%= product.quantity %></h2>
+    <h2>Price: <%= product.price %></h2>
+    <% product.categories.forEach(c => { %>
+        <h2><%= c %></h2>
+    <% }) %>
+    <h2>Likes: <%= product.likes %></h2>
+    <a href="/admin/products/<%= product.id %>/likes"><i class="far fa-thumbs-up"></i></a>
+    <a href="/admin/products/<%= product.id %>/edit">Edit</a>
+    <a href="/admin/products/<%= product.id %>/delete">Delete</a>
+</body>
+</html>
