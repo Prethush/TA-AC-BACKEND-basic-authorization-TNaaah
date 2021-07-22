@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="/client/podcastList/<%= userType %>">View Podcast List</a>
+    <a href="/users/logout">Logout</a>
+    <a href="/client/">My Podcast</a>
+    <div>
+        <video src="/uploads/<%= podcast.podcastUrl %>" width="300" controls></video>
+        <h2>Title: <%= podcast.name %></h2>
+        <h2>Created By: <%= podcast.createdBy %></h2>
+        <h2>Created For: <%= podcast.free ? "Created for all Users" : podcast.vip ? "Created for VIP anf Premium Users" : "Created for Premium Users" %></h2>
+        <h2>Verification Status: <%= podcast.isVerified ? "Verified" : "Not Verified" %></h2>
+        <h2>Likes: <%= podcast.likes %></h2>
+        <a href="/client/podcast/<%= podcast.id %>/likes"><i class="far fa-thumbs-up"></i></a>
+        <% if(podcast.userId == user.id) { %>
+            <a href="/client/podcast/<%= podcast.id %>/edit">Edit Podcast</a>
+            <a href="/client/podcast/<%= podcast.id %>/delete">Delete Podcast</a>
+        <% } %>
+    </div>
+    
+</body>
+</html>

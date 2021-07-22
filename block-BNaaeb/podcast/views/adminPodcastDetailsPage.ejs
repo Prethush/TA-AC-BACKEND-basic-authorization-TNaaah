@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://kit.fontawesome.com/474e96f807.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <a href="/admin/podcastList">View Podcast List</a>
+    <a href="/users/logout">Logout</a>
+    <div>
+        <img src="<%= podcast.podcastUrl %>" alt="podcast">
+        <h2>Title: <%= podcast.name %></h2>
+        <h2>Created By: <%= podcast.createdBy %></h2>
+        <h2>Created For: <%= podcast.free ? "Created for all Users" : podcast.vip ? "Created for VIP anf Premium Users" : "Created for Premium Users" %></h2>
+        <h2>Verification Status: Verified</h2>
+        <h2>Likes: <%= podcast.likes %></h2>
+        <% if(!podcast.isVerified) { %>
+            <a href="/admin/podcast/<%= podcast.id %>/verify">Verify Podcast</a>
+        <% } %>
+        <a href="/admin/podcast/<%= podcast.id %>/likes"><i class="far fa-thumbs-up"></i></a>
+        <a href="/admin/podcast/<%= podcast.id %>/edit">Edit Podcast</a>
+        <a href="/admin/podcast/<%= podcast.id %>/delete">Delete Podcast</a>
+    </div>
+    
+</body>
+</html>

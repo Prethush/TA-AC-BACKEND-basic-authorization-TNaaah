@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/users/register" method="POST">
+        <input type="text" name="name" placeholder="Enter Name">
+        <input type="email" name="email" placeholder="Enter Email">
+        <legend>Select Account Type</legend>
+        <label for="free">Free</label>
+        <input type="radio" name="free" id="free">
+        <label for="vip">VIP</label>
+        <input type="radio" name="vip" id="vip">
+        <label for="premium">Premium</label>
+        <input type="radio" name="premium" id="premium">
+        <label for="admin">Admin</label>
+        <input type="radio" name="admin" id="admin">
+        <input type="password" name="passwd" placeholder="Enter Password">
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
