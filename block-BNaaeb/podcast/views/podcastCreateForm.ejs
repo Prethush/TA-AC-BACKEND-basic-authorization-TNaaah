@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <form action="/admin/podcast" method="POST">
+        <input type="text" name="name" placeholder="Enter Name of the Podcast">
+        <input type="text" name="podcastUrl" placeholder="PodcastUrl">
+        <legend>Created For</legend>
+        <label for="free">Free</label>
+        <input type="radio" name="free" id="free">
+        <label for="vip">VIP</label>
+        <input type="radio" name="vip" id="vip">
+        <label for="premium">Premium</label>
+        <input type="radio" name="premium" id="premium">
+        <input type="submit" value="Create Podcast">
+    </form>
+</body>
+</html>

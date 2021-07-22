@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <% if(podcasts.length !== 0) { %>
+        <% podcasts.forEach(podcast => { %>
+            <div>
+                <img src="<%= podcast.podcastUrl %>" alt="podcast">
+                <h2>Title: <%= podcast.name %></h2>
+                <a href="/admin/podcast/<%= podcast.id %>" class="">Show More</a>
+            </div>
+        <% }) %>
+    <% }  else {%>
+        <h2>No Podcast to Verify</h2>
+    <% } %>
+</body>
+</html>
