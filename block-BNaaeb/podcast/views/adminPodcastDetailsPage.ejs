@@ -12,7 +12,8 @@
     <a href="/admin/podcastList">View Podcast List</a>
     <a href="/users/logout">Logout</a>
     <div>
-        <img src="<%= podcast.podcastUrl %>" alt="podcast">
+        <img src="/uploads/<%= podcast.podcastImg %>" alt="podcast">
+        <audio src="/uploads/<%= podcast.podcastUrl %>" controls></audio>
         <h2>Title: <%= podcast.name %></h2>
         <h2>Created By: <%= podcast.createdBy %></h2>
         <h2>Created For: <%= podcast.free ? "Created for all Users" : podcast.vip ? "Created for VIP anf Premium Users" : "Created for Premium Users" %></h2>

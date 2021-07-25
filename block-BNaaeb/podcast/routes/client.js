@@ -1,6 +1,19 @@
 let express = require('express');
 let router = express.Router();
 let Podcast = require('../models/podcast');
+let multer = require('multer');
+let path = require('path');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, '../public/uploads'))
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname);
+    }
+  });
+   
+  var upload = multer({ storage: storage });
 
 
 router.get('/', (req, res, next) => {
@@ -42,12 +55,13 @@ router.get('/podcast/new', (req, res, next) => {
 });
 
 //create podcast
-router.post('/podcast', (req, res, next) => {
+router.post('/podcast', upload.fields([{name: 'podcastUrl', maxCount: 1}, { name: 'podcastImg', maxCount: 1}]), (req, res, next) => {
     req.body.createdBy = req.user.name + "(User)";
     req.body.free = 'on';
     req.body.isVerified = false;
     req.body.userId = req.user.id;
-    console.log(req.body.userId);
+    req.body.podcastUrl = req.files.podcastUrl && req.files.podcastUrl[0].filename;
+    req.body.podcastImg = req.files.podcastImg && req.files.podcastImg[0].filename;
     let user = req.user.free ? "free" : req.user.vip ? "vip" : "premium";
     Podcast.create(req.body, (err, podcast) => {
         if(err) return next(err);
@@ -86,8 +100,10 @@ router.get('/podcast/:id/edit',(req, res, next) => {
 });
 
 //edit podcast
-router.post('/podcast/:id', (req, res, next) => {
+router.post('/podcast/:id', upload.fields([{name: 'podcastUrl', maxCount: 1}, { name: 'podcastImg', maxCount: 1}]), (req, res, next) => {
     let id = req.params.id;
+    req.body.podcastUrl = req.files.podcastUrl && req.files.podcastUrl[0].filename;
+    req.body.podcastImg = req.files.podcastImg && req.files.podcastImg[0].filename;
     Podcast.findByIdAndUpdate(id, req.body, (err, podcast) => {
         if(err) return next(err);
         res.redirect('/client/podcast/' + id);

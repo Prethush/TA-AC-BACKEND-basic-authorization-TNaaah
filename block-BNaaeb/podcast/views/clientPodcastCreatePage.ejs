@@ -9,9 +9,12 @@
 </head>
 <body>
     <a href="/users/logout">Logout</a>
-    <form action="/client/podcast" method="POST">
+    <form action="/client/podcast" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter the Podcast Name">
-        <input type="text" name="podcastUrl" placeholder="Enter the Podcast URL">
+        <label for="podcastUrl">Upload the Podcast</label>
+        <input type="file" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastImg">Upload the Podcast Image</label>
+        <input type="file" name="podcastImg" placeholder="Podcast Image">
         <input type="submit" value="Create Podcast">
     </form>
 </body>

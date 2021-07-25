@@ -8,33 +8,12 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <form action="/admin/podcast/<%= podcast.id %>" method="POST">
+    <form action="/admin/podcast/<%= podcast.id %>" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter Name of the Podcast" value="<%= podcast.name %>">
-        <input type="text" name="podcastUrl" placeholder="PodcastUrl" value="<%= podcast.podcastUrl %>">
-        <!-- <legend>Created For</legend> -->
-        <!-- <% if(podcast.free) { %>
-            <label for="free">Free</label>
-            <input type="radio" name="free" id="free" checked>
-        <% } else { %>
-            <label for="free">Free</label>
-            <input type="radio" name="free" id="free">
-        <% } %>
-
-        <% if(podcast.vip) { %>
-            <label for="vip">VIP</label>
-            <input type="radio" name="vip" id="vip" checked>
-        <% } else { %>
-            <label for="vip">VIP</label>
-            <input type="radio" name="vip" id="vip">
-        <% } %>
-
-        <% if(podcast.vip) { %>
-            <label for="premium">Premium</label>
-            <input type="radio" name="premium" id="premium" checked>
-        <% } else { %>
-            <label for="premium">Premium</label>
-            <input type="radio" name="premium" id="premium">
-        <% } %> -->
+        <label for="podcastUrl">Upload the Podcast</label>
+        <input type="file" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastImg">Upload the Podcast Image</label>
+        <input type="file" name="podcastImg" placeholder="Podcast Image">
         <input type="submit" value="Update Podcast">
     </form>
 </body>
