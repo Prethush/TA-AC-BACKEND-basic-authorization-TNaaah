@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <a href="/client/podcastList/<%= userType %>">View Podcast List</a>
+    <% if(podcasts.length !== 0) { %>
+        <% podcasts.forEach(p => { %>
+            <div>
+                <img src="/uploads/<%= p.podcastImg %>" alt="podcast">
+                <audio src="/uploads/<%= p.podcastUrl %>" controls></audio>
+            </div>
+                <h3><%= p.name %></h3>
+                <a href="/client/podcast/<%= p.id %>">Show More</a>
+        <% }) %>
+    <% } else {%>
+        <h2>There is no Podcast to View</h2>
+    <% } %>
+</body>
+</html>

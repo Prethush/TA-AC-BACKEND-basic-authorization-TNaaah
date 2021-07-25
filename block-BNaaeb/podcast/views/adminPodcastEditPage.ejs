@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <form action="/admin/podcast/<%= podcast.id %>" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Enter Name of the Podcast" value="<%= podcast.name %>">
+        <label for="podcastUrl">Upload the Podcast</label>
+        <input type="file" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastImg">Upload the Podcast Image</label>
+        <input type="file" name="podcastImg" placeholder="Podcast Image">
+        <input type="submit" value="Update Podcast">
+    </form>
+</body>
+</html>

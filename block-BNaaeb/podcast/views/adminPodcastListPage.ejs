@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <a href="/admin/podcast/new">Create Podcast</a>
+    <a href="/users/logout">Logout</a>
+    <a href="/admin/podcastList/verification">Verification Pending</a>
+    <a href="/admin/podcastList/myPodcasts">My Podcasts</a>
+    <% podcasts.forEach(podcast => { %>
+        <div>
+            <img src="/uploads/<%= podcast.podcastImg %>" alt="podcast">
+            <audio src="/uploads/<%= podcast.podcastUrl %>" controls></audio>
+            <h2>Title: <%= podcast.name %></h2>
+            <a href="/admin/podcast/<%= podcast.id %>" class="">Show More</a>
+        </div>
+    <% }) %>
+   
+</body>
+</html>

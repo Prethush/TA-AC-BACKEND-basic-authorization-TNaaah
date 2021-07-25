@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <a href="/users/logout">Logout</a>
+    <a href="/client/podcast/new">Create Podcast</a>
+    <a href="/client/podcastList/myPodcasts">My Podcast List</a>
+    
+    <h2>Podcast List of VIP Users</h2>
+    <div>
+        <% freePodcasts.forEach(p => { %>
+            <div>
+                <img src="/uploads/<%= p.podcastImg %>" alt="podcast">
+                <audio src="/uploads/<%= p.podcastUrl %>" controls></audio>
+            </div>
+            <h3><%= p.name %></h3>
+            <a href="/client/podcast/<%= p.id %>">Show More</a>
+        <% }) %>
+    </div>
+    <div>
+        <% vipPodcasts.forEach(p => { %>
+            <div>
+                <img src="/uploads/<%= p.podcastImg %>" alt="podcast">
+                <audio src="/uploads/<%= p.podcastUrl %>" controls></audio>
+            </div>
+            <h3><%= p.name %></h3>
+            <a href="/client/podcast/<%= p.id %>">Show More</a>
+        <% }) %>
+    </div>
+   
+
+</body>
+</html>
