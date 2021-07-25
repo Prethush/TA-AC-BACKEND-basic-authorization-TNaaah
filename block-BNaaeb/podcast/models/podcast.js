@@ -5,6 +5,7 @@ let podcastSchema = new Schema({
     createdBy: String,
     name: {type: String, required: true},
     podcastUrl: String,
+    podcastImg: String,
     free: String,
     vip: String,
     premium: String,

@@ -10,9 +10,12 @@
 <body>
     <a href="/users/logout">Logout</a>
     <a href="/client/podcastList/<%= userType %>" >View Podcast List</a>
-   <form action="/client/podcast/<%= podcast.id %>" method="POST">
+   <form action="/client/podcast/<%= podcast.id %>" method="POST" enctype="multipart/form-data">
        <input type="text" name="name" value="<%= podcast.name %>">
-       <input type="text" name="podcastUrl" value="<%= podcast.podcastUrl %>">
+       <label for="podcastUrl">Upload the Podcast</label>
+        <input type="file" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastImg">Upload the Podcast Image</label>
+        <input type="file" name="podcastImg" placeholder="Podcast Image">
        <input type="submit" value="Update Podcast">
    </form> 
 </body>

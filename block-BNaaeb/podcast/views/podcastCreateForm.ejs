@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <form action="/admin/podcast" method="POST">
+    <form action="/admin/podcast" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter Name of the Podcast">
-        <input type="text" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastUrl">Upload the Podcast</label>
+        <input type="file" name="podcastUrl" placeholder="PodcastUrl">
+        <label for="podcastImg">Upload the Podcast Image</label>
+        <input type="file" name="podcastImg" placeholder="Podcast Image">
         <legend>Created For</legend>
         <label for="free">Free</label>
         <input type="radio" name="free" id="free">

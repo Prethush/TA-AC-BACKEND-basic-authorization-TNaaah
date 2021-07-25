@@ -11,7 +11,8 @@
     <% if(podcasts.length !== 0) { %>
         <% podcasts.forEach(podcast => { %>
             <div>
-                <img src="<%= podcast.podcastUrl %>" alt="podcast">
+                <img src="/uploads/<%= podcast.podcastImg %>" alt="podcast">
+                <audio src="/uploads/<%= podcast.podcastUrl %>" controls></audio>
                 <h2>Title: <%= podcast.name %></h2>
                 <a href="/admin/podcast/<%= podcast.id %>" class="">Show More</a>
             </div>

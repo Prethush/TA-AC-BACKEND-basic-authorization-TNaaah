@@ -13,7 +13,8 @@
     <a href="/users/logout">Logout</a>
     <a href="/client/">My Podcast</a>
     <div>
-        <video src="/uploads/<%= podcast.podcastUrl %>" width="300" controls></video>
+        <img src="/uploads/<%= podcast.podcastImg %>" alt="podcast">
+        <audio src="/uploads/<%= podcast.podcastUrl %>" controls></audio>
         <h2>Title: <%= podcast.name %></h2>
         <h2>Created By: <%= podcast.createdBy %></h2>
         <h2>Created For: <%= podcast.free ? "Created for all Users" : podcast.vip ? "Created for VIP anf Premium Users" : "Created for Premium Users" %></h2>
